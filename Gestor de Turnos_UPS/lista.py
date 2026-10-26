@@ -88,16 +88,16 @@ def prueba_lista():
     assert lista.is_empty()
     assert lista.buscar_por_nombre("Ana") is None
  
-    assert lista.agregar("12345678901", "Ana")[0]
-    assert lista.agregar("10987654321", "Luis")[0]
+    assert lista.agregar("1234567890", "Ana")[0]
+    assert lista.agregar("1098765432", "Luis")[0]
     assert not lista.agregar("123", "Rosa")[0]              # muy corta
     assert not lista.agregar("123456789012", "Rosa")[0]     # muy larga
     assert not lista.agregar("1234567890a", "Rosa")[0]      # con letra
-    assert not lista.agregar("11111111111", "ana")[0]       # nombre repetido
+    assert not lista.agregar("1111111111", "ana")[0]       # nombre repetido
     assert not lista.agregar("12345678901", "Pedro")[0]     # cedula repetida
-    assert not lista.agregar("11111111111", "  ")[0]        # nombre vacio
+    assert not lista.agregar("1111111111", "  ")[0]        # nombre vacio
  
-    assert lista.buscar_por_nombre("luis").cedula == "10987654321"
+    assert lista.buscar_por_nombre("luis").cedula == "1098765432"
     assert lista.buscar_por_nombre("Pedro") is None
     assert lista.head.dato.nombre == "Ana"
     assert lista.tail.dato.nombre == "Luis"
