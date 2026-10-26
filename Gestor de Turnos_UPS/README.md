@@ -19,3 +19,12 @@ Se ejecuta el programa desde el main.py
 0. **Salir:** cierra el programa.
 
 **Importante:** ingresar cédulas de exactamente 10 dígitos numéricos, sin letras ni espacios.
+
+### Estructuras de Datos Utilizadas
+
+| Archivo | Estructura | Función |
+|---|---|---|
+| `lista.py` | Lista enlazada | Almacena y permite buscar clientes. |
+| `cola.py` | Cola FIFO | Administra los turnos por orden de llegada. |
+| `pila.py` | Pila LIFO | Conserva el historial de acciones y registros. |
+| `main.py` | Programa principal | Integra las estructuras y el menú interactivo. |
