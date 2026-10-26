@@ -1,5 +1,5 @@
 # PROGRAMA DE GESTOR DE TURNOS CAR UPS
-##Elaborado por: Alan Guillermo Peñafiel Gonzalez
+## Elaborado por: Alan Guillermo Peñafiel Gonzalez
 
 Programa en Python para gestionar clientes y turnos de un taller mecánico a base de Pilas, Colas y Listas enlazadas.
 
