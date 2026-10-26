@@ -1,5 +1,4 @@
-##PROGRAMA PRINCIPAL DE GESTOR DE TURNOS
-
+## PROGRAMA PRINCIPAL DE GESTOR DE TURNOS
 # main.py - Gestion de turnos del taller CarUPS
 # Integra: Pila (historial), Cola (turnos) y Lista enlazada (clientes)
 
@@ -32,20 +31,23 @@ def main():
         mostrar_menu()
         opcion = input("Elija una opcion: ").strip()
 
+        ##Registra un cliente en el gestor
         if opcion == "1":
             nombre = input("Nombre: ").strip()
+            ##El bucle permite ingresar la cédula sin salir por posibles errores de tipeo o conteo.
             while True:
-                cedula = input("Cédula: ").strip()
-                if not cedula.isdigit() or len(cedula) != 10:
-                    print("La cedula debe tener 10 digitos. Intente nuevamente.")
+                cedula = input("Cédula (10 dígitos): ").strip()
+                ok, mensaje = clientes.agregar(cedula, nombre)
+                print(mensaje)
+                if ok:
+                    historial.push("Registrar cliente: " + nombre)
+                    break
+                if "cedula debe tener" in mensaje.lower():
+                    print("Intente nuevamente.")
                 else:
                     break
-            ok, mensaje = clientes.agregar(cedula, nombre)
-            print(mensaje)
-            if ok:
-                historial.push("Registrar cliente: " + nombre)
-
-
+       
+        ##Función de buscar por nombre en el registro
         elif opcion == "2":
             nombre = input("Nombre a buscar: ")
             cliente = clientes.buscar_por_nombre(nombre)
@@ -53,21 +55,41 @@ def main():
                 print("Cliente no encontrado.")
             else:
                 print("Encontrado ->", cliente)
-
+        
+        ##Muestra los clientes registrados
         elif opcion == "3":
             clientes.mostrar()
-
+        #Permite agendar un turno para un cliente ya registrado o para un nuevo cliente registrándolo previamente
         elif opcion == "4":
-            nombre = input("Nombre del cliente: ")
+            nombre = input("Nombre del cliente: ").strip()
             cliente = clientes.buscar_por_nombre(nombre)
+            ##El bloque if permite que agendar un turno para un cliente no registrado
             if cliente is None:
-                print("El cliente no esta registrado. Use la opcion 1 primero.")
-            else:
-                # Los turnos se manejan solo por nombre
+                print(f"El cliente '{nombre}' no está registrado.")
+                respuesta = input("¿Desea registrarlo? (s/n): ").strip().lower()
+                if respuesta == "s":
+                    while True:
+                        cedula = input("Cédula (10 dígitos): ").strip()
+                        ok, mensaje = clientes.agregar(cedula, nombre)
+                        print(mensaje)
+                        if ok:
+                            historial.push("Registrar cliente: " + nombre)
+                            cliente = clientes.buscar_por_nombre(nombre)
+                            break
+
+                        if "cedula debe tener" in mensaje.lower():
+                            print("Intente nuevamente.")
+                        else:
+                            break
+                else:
+                    print("Registro cancelado.")
+
+            if cliente is not None:
                 turnos.enqueue(cliente.nombre)
                 historial.push("Registrar turno: " + cliente.nombre)
-                print("Turno registrado.")
-
+                print(f"Turno registrado para {cliente.nombre}.")
+      
+      ##Atiende turnos por FIFO
         elif opcion == "5":
             atendido = turnos.dequeue()
             if atendido is None:
@@ -75,21 +97,25 @@ def main():
             else:
                 historial.push("Atender turno: " + atendido)
                 print(f"Atendiendo a {atendido}.")
-
+        
+        #Turnos en espera
         elif opcion == "6":
             turnos.mostrar()
 
+        #Elimina la última acción del historial
         elif opcion == "7":
             accion = historial.pop()
             if accion is None:
                 print("El historial esta vacio.")
             else:
                 print("Accion eliminada del historial:", accion)
-
+        
+        ##Muestra el historial de más reciente a más antiguo
         elif opcion == "8":
-            print("Historial (de la mas reciente a la mas antigua):")
+            print("Historial de últimos cambios")
             historial.mostrar()
 
+        ##Prueba estructural, devuelve ok.
         elif opcion == "9":
             prueba_pila()
             prueba_cola()
