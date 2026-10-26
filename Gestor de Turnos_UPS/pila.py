@@ -8,6 +8,7 @@ class Nodo:
         self.dato = dato
         self.siguiente = siguiente
 
+##El método LIFO es el adecuado ya que es el que permite mediante su método pop permite eliminar o "deshacer" la última acción realizada.
 ##Implenetación de la íla
 class Pila:
     def __init__(self):
@@ -30,7 +31,7 @@ class Pila:
         return dato
 
     def peek(self):
-        # vigila la cima o cabecera.
+        # O(1) vigila la cima o cabecera.
         if self.is_empty():
             return None
         return self.cima.dato
