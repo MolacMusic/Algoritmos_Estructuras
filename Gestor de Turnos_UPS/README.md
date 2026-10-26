@@ -2,6 +2,9 @@
 
 Programa en Python para gestionar clientes y turnos de un taller mecánico a base de Pilas, Colas y Listas enlazadas.
 
+Se ejecuta el programa desde el main.py
+
+
 ### Opciones del menú
 1. **Registrar cliente:** ingresa el nombre y la cédula.
 2. **Buscar cliente:** busca por nombre.
