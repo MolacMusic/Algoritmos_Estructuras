@@ -17,7 +17,7 @@ class Cola:
         return self.head is None
 
     def enqueue(self, dato):
-        # encola en el final
+        #O(1) encola en el final
         nuevo = Nodo(dato)
         if self.is_empty():
             self.head = nuevo
@@ -27,7 +27,7 @@ class Cola:
             self.tail = nuevo
 
     def dequeue(self):
-        # extrae el inicio
+        #O(1) extrae el inicio
         if self.is_empty():
             return None  # cola vacía
         dato = self.head.dato
@@ -37,7 +37,7 @@ class Cola:
         return dato
 
     def peek(self):
-        # revisa el frente de la cola
+        # O(1) revisa el frente de la cola
         if self.is_empty():
             return None
         return self.head.dato
