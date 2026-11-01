@@ -5,10 +5,9 @@ Programa en Python para gestionar los registros y préstamos de la biblioteca de
 
 ## Cómo ejecutar
 ```bash
-pip install sortedcontainers   # opcional; si no está, se usa sorted()
+pip install sortedcontainers   
 python main.py
 ```
-El programa incluye libros y socios de ejemplo para probarlo de inmediato.
 
 ## Archivos
  `main.py`: menú de consola principal.
