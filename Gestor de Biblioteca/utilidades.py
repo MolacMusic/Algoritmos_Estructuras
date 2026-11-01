@@ -2,7 +2,7 @@
 ##utilidades.py - Funciones auxiliares 
  
 # R2: SortedDict funge de estructura para el TreeMap
-# Instala Sorted para ordenar. Sino Sort.
+
 try:
     from sortedcontainers import SortedDict
 except ImportError:
