@@ -11,6 +11,7 @@ python main.py
 
 ## Archivos
  `main.py`: menú de consola principal.
+ 
  `utilidades.py`: funciones de cada requerimiento.
 
 ## Menú de Opciones
@@ -18,6 +19,9 @@ python main.py
 `1. Registrar nuevo libro`
 
 `2. Buscar libro por código`
+
 `3. Mostrar catálogo ordenado por código`
+
 `4. Registrar socio`
+
 `5. Verificar si un socio está registrado`
