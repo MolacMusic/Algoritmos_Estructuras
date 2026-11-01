@@ -66,3 +66,25 @@ def socio_registrado(socios, id_socio):
     ###Verifica al instante si un identificador ya está registrado.
     # verificar pertenencia: O(1) en promedio
     return id_socio in socios
+
+# ---------- R4: Análisis de préstamos (Op entre conjuntos) ---------
+def crear_prestamos_ejemplo():
+    ###Dos conjuntos de socios: con préstamos de novela y de ciencia.
+    novela = {"S001", "S002", "S003"}
+    ciencia = {"S003", "S004", "S005"}
+    return novela, ciencia
+ 
+ 
+def socios_ambos_generos(novela, ciencia):
+    # intersección: O(min(n, m)) 
+    return novela & ciencia
+ 
+ 
+def socios_solo_novela(novela, ciencia):
+    # diferencia: O(n) donde n = tamaño del conjunto novela
+    return novela - ciencia
+ 
+ 
+def total_socios_con_prestamos(novela, ciencia):
+    # unión: O(n + m)
+    return novela | ciencia
