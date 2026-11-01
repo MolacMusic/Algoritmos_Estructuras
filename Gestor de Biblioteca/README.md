@@ -25,3 +25,12 @@ python main.py
 `4. Registrar socio`
 
 `5. Verificar si un socio está registrado`
+
+##Tabla de Complejidades
+
+| Requerimiento | Operación principal | Complejidad |
+|---|---|---|
+| R1 | Registrar / buscar por código | O(1) promedio |
+| R2 | Ordenar catálogo | O(n log n) |
+| R3 | Registrar / verificar socio | O(1) promedio |
+| R4 | Intersección / diferencia / unión | O(min(n,m)) / O(n) / O(n+m) |
